@@ -1,15 +1,11 @@
 package controllers;
 
-import model.Role;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import service.UserService;
-import service.UserServiceImp;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/admin")
@@ -35,7 +31,7 @@ public class AdminController {
     @PostMapping
     public String addUsers(@ModelAttribute("users") User user, @RequestParam("roles_id") String role_id) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRoles(userService.findRollsbyId(role_id));
+        user.setRoles(userService.findRolesById(role_id));
         return "redirect:/admin";                                                                      // прописать метод добавления
     }
 

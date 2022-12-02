@@ -1,13 +1,18 @@
 package model;
 
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.List;
 import java.util.Set;
-
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode(exclude = "roles")
+@ToString(exclude = "")
 @Entity
 @Table(name = "users")
 public class User implements UserDetails {
@@ -15,20 +20,10 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-
-
     @Column(name = "name")
     private String username;
-
-    @Column(name = "surname")
     private String surname;
-
-    @Column(name = "email")
     private String email;
-
-
-    @Column(name = "password")
     private String password;
 
     @Transient
@@ -42,75 +37,7 @@ public class User implements UserDetails {
     )
     private Set<Role> roles;
 
-
-    public User() {
-    }
-
-    public User(String username, String surname, String email) {
-        this.username = username;
-        this.surname = surname;
-        this.email = email;
-    }
-
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(int  id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return username;
-    }
-
-    public void setName(String name) {
-        this.username = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPasswordConfirm() {
-        return passwordConfirm;
-    }
-
-    public void setPasswordConfirm(String passwordConfirm) {
-        this.passwordConfirm = passwordConfirm;
-    }
-
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
-
-    public void addRole(Role role){
-        this.roles.add(role);
+    public User(String name, String surname, String email) {
     }
 
     @Override

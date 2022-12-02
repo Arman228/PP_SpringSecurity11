@@ -9,23 +9,28 @@ import java.util.List;
 
 public interface UserDao {
 
-    void add(User user);
+    void saveUser(User user);
+
+    void saveRole(Role role);
 
     User getById(int id);
 
     void delete(int id);
 
 
-    void edit(int id, User user);
+    void edit( User user);
 
     public List<User> getAllUsers();
 
-    public List<Role>getAllRolls();
+    public List<Role> getAllRolls();
 
     public User findUserName(String name);
-
-
 }
+
+
+
+
+
 
 
 

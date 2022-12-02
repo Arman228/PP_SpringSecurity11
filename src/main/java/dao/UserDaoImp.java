@@ -3,6 +3,7 @@ package dao;
 
 import model.Role;
 import model.User;
+import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -13,15 +14,19 @@ import java.util.List;
 @Repository
 public class UserDaoImp implements UserDao {
 
-
     @PersistenceContext
     private EntityManager entity;
 
 
     @Override
-    public void add(User user) {
+    public void saveUser(User user) {
         entity.persist(user);
 
+    }
+
+    @Override
+    public void saveRole(Role role) {
+        entity.persist(role);
     }
 
     @Override
@@ -36,9 +41,9 @@ public class UserDaoImp implements UserDao {
 
     }
 
+
     @Override
-    public void edit( int id, User user) {
-        user.setId(id);
+    public void edit(User user) {
         entity.merge(user);
 
 
@@ -56,12 +61,15 @@ public class UserDaoImp implements UserDao {
 
     @Override
     public User findUserName(String name) {
-        TypedQuery<User> query=entity.createQuery("from User where username = :username", User.class );
-        query.setParameter("username",name);
+        TypedQuery<User> query = entity.createQuery("select u from User u , where u.username =:username", User.class);
+        query.setParameter("username", name);
         return query.getSingleResult();
     }
 
 
 }
+
+
+
 
 
