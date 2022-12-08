@@ -28,7 +28,7 @@ public class Util {
 
 
         roles.add(user);
-        User newUser = new User("admin", "mainAdmin", "@gmail.com");
+        User newUser = new User("admin", "mainAdmin", "admin@gmail.com");
         newUser.setRoles(roles);
         newUser.setUsername("user");
         newUser.setPassword(passwordEncoder.encode("1234"));
@@ -36,7 +36,7 @@ public class Util {
 
         roles.add(user);
         roles.add(admin);
-        User admin_user = new User("admin_user", "Maslov", "@mail.ru");
+        User admin_user = new User("admin_user", "Maslov", "user@mail.ru");
         admin_user.setPassword(passwordEncoder.encode("1234"));
         admin_user.setRoles(roles);
         admin_user.setUsername("admin");
