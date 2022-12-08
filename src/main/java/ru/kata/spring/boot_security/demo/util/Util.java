@@ -1,16 +1,11 @@
-package util;
+package ru.kata.spring.boot_security.demo.util;
 
-import dao.UserDao;
-import dao.UserDaoImp;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import model.Role;
-import model.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import ru.kata.spring.boot_security.demo.model.Role;
+import ru.kata.spring.boot_security.demo.model.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
-import service.UserService;
-import service.UserServiceImp;
+import ru.kata.spring.boot_security.demo.service.UserService;
 
 import javax.annotation.PostConstruct;
 import java.util.HashSet;

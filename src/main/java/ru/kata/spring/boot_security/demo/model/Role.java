@@ -1,4 +1,4 @@
-package model;
+package ru.kata.spring.boot_security.demo.model;
 
 import lombok.EqualsAndHashCode;
 import org.springframework.security.core.GrantedAuthority;

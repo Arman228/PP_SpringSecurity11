@@ -1,15 +1,17 @@
-package service;
+package ru.kata.spring.boot_security.demo.service;
 
-import dao.UserDao;
+import ru.kata.spring.boot_security.demo.dao.UserDao;
 import lombok.AllArgsConstructor;
-import model.User;
+import ru.kata.spring.boot_security.demo.model.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @AllArgsConstructor
+@Transactional
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final UserDao dao;
