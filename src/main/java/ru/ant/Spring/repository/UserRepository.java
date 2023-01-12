@@ -1,8 +1,8 @@
-package ru.ant.firstRestApp.repository;
+package ru.ant.Spring.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import ru.ant.firstRestApp.model.User;
+import ru.ant.Spring.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {

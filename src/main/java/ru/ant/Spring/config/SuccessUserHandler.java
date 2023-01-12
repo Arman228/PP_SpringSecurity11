@@ -1,4 +1,4 @@
-package ru.ant.firstRestApp.config;
+package ru.ant.Spring.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.Authentication;

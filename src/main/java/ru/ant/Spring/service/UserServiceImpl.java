@@ -1,4 +1,4 @@
-package ru.ant.firstRestApp.service;
+package ru.ant.Spring.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -9,9 +9,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import ru.ant.firstRestApp.model.Role;
-import ru.ant.firstRestApp.model.User;
-import ru.ant.firstRestApp.repository.UserRepository;
+import ru.ant.Spring.model.Role;
+import ru.ant.Spring.model.User;
+import ru.ant.Spring.repository.UserRepository;
 
 import java.util.Collection;
 import java.util.List;
@@ -50,6 +50,8 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(id);
     }
 
+
+
     @Override
     @Transactional
     public void updateUser(Integer id, User user) {
@@ -57,10 +59,9 @@ public class UserServiceImpl implements UserService {
         User userToBeUpdate = showUser(id);
         userToBeUpdate.setUsername(user.getUsername());
         userToBeUpdate.setPassword(user.getPassword());
-        userToBeUpdate.setFirstName(user.getFirstName());
-        userToBeUpdate.setLastName(user.getLastName());
-        userToBeUpdate.setAge(user.getAge());
-        userToBeUpdate.setRole(user.getRoles());
+        userToBeUpdate.setSurname(user.getSurname());
+        userToBeUpdate.setEmail(user.getEmail());
+        userToBeUpdate.setRoles(user.getRoles());
         userRepository.save(userToBeUpdate);
     }
 
@@ -83,9 +84,8 @@ public class UserServiceImpl implements UserService {
                 user.getPassword(), mapRolesToAuthorities(user.getRoles()));
     }
 
-    @Override
     public Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
-        return roles.stream().map(r -> new SimpleGrantedAuthority(r.getRoleName())).collect(Collectors.toList());
+        return roles.stream().map(r -> new SimpleGrantedAuthority(r.getName())).collect(Collectors.toList());
     }
 
     @Override

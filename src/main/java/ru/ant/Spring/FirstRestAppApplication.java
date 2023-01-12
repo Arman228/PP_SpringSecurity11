@@ -1,4 +1,4 @@
-package ru.ant.firstRestApp;
+package ru.ant.Spring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

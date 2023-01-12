@@ -1,13 +1,13 @@
-package ru.ant.firstRestApp.service;
+package ru.ant.Spring.service;
 
 import org.springframework.stereotype.Service;
-import ru.ant.firstRestApp.model.Role;
+import ru.ant.Spring.model.Role;
 
 import java.util.List;
 
 @Service
 public interface RoleService {
-    Role findRoleById(Integer id);
+    void findRoleById(int id);
 
     List<Role> getAllRoles();
 
